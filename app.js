@@ -111,19 +111,19 @@ const db = require('./helpers/db.js');
         const isRegisteredNumber = await checkRegisterdNumber(num);
         if(!isRegisteredNumber) {
             return res.status(422).json({
-                status: false,
+                status: "Gagal!",
                 message: 'The Number is not registered whatsapp !!'
             });
         }
     
         client.sendMessage(num, otp).then(response => {
             res.status(200).json({
-                status:true,
+                status: "Terkirim!",
                 response: response
             });
         }).catch(err => {
             res.status(500).json({
-                status:false,
+                status: "Gagal!",
                 response: err
             });
         })
